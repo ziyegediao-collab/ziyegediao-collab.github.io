@@ -39,6 +39,13 @@
   .pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;background:#21262d;color:var(--dim);margin-left:6px}
   details{margin-top:16px} summary{cursor:pointer;color:var(--acc)}
   .note{font-size:13px;color:var(--dim)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0}
+  .step{border:1px solid var(--acc);border-radius:8px;padding:8px 12px;font-size:14px;background:rgba(88,166,255,.08);max-width:220px}
+  .step b{display:block;font-size:13px;color:var(--acc)}
+  .arr{align-self:center;padding:0 6px;color:var(--dim);font-size:18px}
+  .diag{margin-bottom:22px}
+  .diag h3{font-size:15px;margin:0 0 4px}
+  .diag p{font-size:13px}
   .hidden{display:none}
 </style>
 </head>
@@ -67,6 +74,80 @@
       <h2>📖 生词表</h2>
       <p class="note">做题时遇到不熟的词，先看这里，比括号插进题干里干净。</p>
       <div id="glossary"></div>
+    </div>
+    <div class="card">
+      <h2>📊 流程图解</h2>
+      <p class="note">考试最爱考的流程，一张图讲清顺序和关键点。做题时卡住了，先回来对照这张图。</p>
+
+      <div class="diag">
+        <h3>1. 变更控制流程（逢变必走）</h3>
+        <div class="flow">
+          <div class="step"><b>提出</b>任何人提出变更请求</div><span class="arr">→</span>
+          <div class="step"><b>评估</b>对范围、进度、成本的影响</div><span class="arr">→</span>
+          <div class="step"><b>审批</b>变更控制委员会拍板</div><span class="arr">→</span>
+          <div class="step"><b>更新</b>获批后更新基准和文档</div><span class="arr">→</span>
+          <div class="step"><b>执行</b>通知团队按新基准干活</div>
+        </div>
+        <p>❌ 不能先斩后奏、事后补记录；被否决也要记录原因并告知提出人。</p>
+      </div>
+
+      <div class="diag">
+        <h3>2. 项目五大过程组</h3>
+        <div class="flow">
+          <div class="step"><b>启动</b>定章程、识别干系人</div><span class="arr">→</span>
+          <div class="step"><b>规划</b>定范围、排进度、算预算</div><span class="arr">→</span>
+          <div class="step"><b>执行</b>带团队干活、管质量</div><span class="arr">→</span>
+          <div class="step"><b>监控</b>对照基准、管变更、控风险</div><span class="arr">→</span>
+          <div class="step"><b>收尾</b>验收、移交、总结教训</div>
+        </div>
+        <p>监控不是一个阶段，它贯穿全程；收尾哪怕项目提前终止也要走正式流程。</p>
+      </div>
+
+      <div class="diag">
+        <h3>3. 挣值判断（一句话记牢）</h3>
+        <div class="flow">
+          <div class="step"><b>PV 计划价值</b>到今天原计划该干的活</div><span class="arr">＋</span>
+          <div class="step"><b>EV 挣值</b>实际干完的活</div><span class="arr">＋</span>
+          <div class="step"><b>AC 实际成本</b>已经花的钱</div>
+        </div>
+        <p>CPI = EV ÷ AC：小于 1 超支，大于 1 节约。SPI = EV ÷ PV：小于 1 落后，大于 1 提前。分子永远是 EV。</p>
+      </div>
+
+      <div class="diag">
+        <h3>4. Sprint 循环</h3>
+        <div class="flow">
+          <div class="step"><b>规划会</b>定目标、拉取工作</div><span class="arr">→</span>
+          <div class="step"><b>每日站会</b>进展、计划、阻碍</div><span class="arr">→</span>
+          <div class="step"><b>开发工作</b>做出可用的增量</div><span class="arr">→</span>
+          <div class="step"><b>评审会</b>给干系人演示、拿反馈</div><span class="arr">→</span>
+          <div class="step"><b>回顾会</b>复盘流程、定改进行动</div><span class="arr">↻</span>
+          <div class="step"><b>下一个 Sprint</b></div>
+        </div>
+        <p>Sprint 长度固定，中途不延长；新需求要进 Sprint 得先评估对目标的影响、等量置换。</p>
+      </div>
+
+      <div class="diag">
+        <h3>5. 风险管理流程</h3>
+        <div class="flow">
+          <div class="step"><b>识别</b>找出风险</div><span class="arr">→</span>
+          <div class="step"><b>分析</b>概率 × 影响排优先级</div><span class="arr">→</span>
+          <div class="step"><b>应对</b>规避 / 转移 / 减轻 / 接受</div><span class="arr">→</span>
+          <div class="step"><b>登记</b>记入风险登记册</div><span class="arr">→</span>
+          <div class="step"><b>监控</b>执行应对、盯次生风险</div>
+        </div>
+        <p>高概率高影响要主动应对；应对失效了就重新评估、更新登记册、制定新策略。</p>
+      </div>
+
+      <div class="diag">
+        <h3>6. 冲突与干系人问题处理顺序</h3>
+        <div class="flow">
+          <div class="step"><b>了解</b>私下了解诉求和原因</div><span class="arr">→</span>
+          <div class="step"><b>协商</b>围绕共同目标引导协商</div><span class="arr">→</span>
+          <div class="step"><b>调整</b>改沟通方式或参与计划</div><span class="arr">→</span>
+          <div class="step"><b>跟进</b>确认问题真的解决</div>
+        </div>
+        <p>升级、投票、调离、施压都是最后手段，考试里一上来就选这些基本都是错的。</p>
+      </div>
     </div>
   </div>
 
