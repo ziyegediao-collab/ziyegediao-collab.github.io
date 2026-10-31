@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 刷题模拟 · ziyegediao</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:10px 20px;font-size:15px;cursor:pointer}
+  button.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+  button:disabled{opacity:.5;cursor:default}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:20px;padding:2px 10px;color:var(--dim)}
+  .q-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .timer{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+  .timer.low{color:var(--bad)}
+  .bar{height:8px;background:#21262d;border-radius:4px;overflow:hidden;margin:12px 0}
+  .bar i{display:block;height:100%;background:var(--acc)}
+  .opt{display:block;width:100%;text-align:left;background:transparent;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px;line-height:1.6}
+  .opt:hover{border-color:var(--acc)}
+  .opt.sel{border-color:var(--acc);background:rgba(88,166,255,.12)}
+  .grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .grid button{padding:6px 0;width:40px;font-size:13px}
+  .grid button.done{background:#21262d}
+  .grid button.flag{border:1px solid var(--warn);color:var(--warn)}
+  .grid button.cur{outline:2px solid var(--acc)}
+  .res-q{border-top:1px solid var(--line);padding:14px 0}
+  .res-q:first-child{border-top:0}
+  .ok{color:var(--good)} .no{color:var(--bad)}
+  .why{color:var(--dim);font-size:14px}
+  .pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;background:#21262d;color:var(--dim);margin-left:6px}
+  details{margin-top:16px} summary{cursor:pointer;color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="home">
+    <h1>🧪 PMP 刷题模拟</h1>
+    <p class="sub">自编情景题，非 PMI 真题 · 练的是“最先做 vs 最好做”的判断和 4 小时耐力</p>
+    <div class="card">
+      <h2>📅 每日五题</h2>
+      <p>随机抽 5 道情景题，做完即时出分和解析，附本期生词。</p>
+      <div class="row"><button onclick="startQuiz('daily')">开始今日五题</button></div>
+    </div>
+    <div class="card">
+      <h2>⏱️ 全真模拟</h2>
+      <p>按真实考试节奏：每题 80 秒倒计时、可标记存疑、交卷后按人员 / 过程 / 敏捷 / 业务环境出正确率。</p>
+      <p id="bankInfo" class="note"></p>
+      <div class="row"><button onclick="startQuiz('mock')">开始全真模拟</button></div>
+    </div>
+    <div class="card" id="statsCard">
+      <h2>📊 我的记录 <span class="pill">存在本机浏览器</span></h2>
+      <p id="statsText">还没有记录，做完一套这里就有统计。</p>
+      <div class="row"><button class="ghost" onclick="clearStats()">清除记录</button></div>
+    </div>
+    <div class="card">
+      <h2>📖 生词表</h2>
+      <p class="note">做题时遇到不熟的词，先看这里，比括号插进题干里干净。</p>
+      <div id="glossary"></div>
+    </div>
+  </div>
+
+  <div id="quiz" class="hidden">
+    <div class="q-meta">
+      <span><span id="qPos"></span> <span class="tag" id="qDom"></span></span>
+      <span class="timer" id="timer"></span>
+    </div>
+    <div class="bar"><i id="prog"></i></div>
+    <div class="card">
+      <div id="qStem" style="font-size:16px"></div>
+      <div id="opts"></div>
+    </div>
+    <div class="row">
+      <button class="ghost" id="prevBtn" onclick="move(-1)">上一题</button>
+      <button class="ghost" id="flagBtn" onclick="toggleFlag()">🚩 标记存疑</button>
+      <button id="nextBtn" onclick="move(1)">下一题</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="row"><button onclick="submitQuiz()">交卷</button></div>
+  </div>
+
+  <div id="result" class="hidden">
+    <h1 id="scoreTitle"></h1>
+    <div class="card" id="domBreak"></div>
+    <div class="row">
+      <button class="ghost" onclick="filterWrong(this)">只看错题</button>
+      <button onclick="backHome()">回首页</button>
+    </div>
+    <div class="card"><div id="resList"></div></div>
+  </div>
+</div>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
