@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冲突与干系人问题 · 一张图看懂</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:12px 0}
+  .step{border:1px solid var(--acc);border-radius:8px;padding:8px 12px;font-size:14px;background:rgba(88,166,255,.08);max-width:220px}
+  .step b{display:block;font-size:13px;color:var(--acc)}
+  .arr{align-self:center;padding:0 6px;color:var(--dim);font-size:18px}
+  .modes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:560px){.modes{grid-template-columns:1fr}}
+  .m{border:1px solid var(--line);border-radius:10px;padding:14px;background:#0d1117}
+  .m.best{border-color:var(--good)}
+  .m.last{border-color:var(--bad)}
+  .m .f{font-size:16px;font-weight:700}
+  .m .f span{color:var(--acc);font-weight:400;font-size:13px}
+  .m .row{font-size:14px;color:var(--dim);margin-top:6px}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--acc);border-radius:10px;background:rgba(88,166,255,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .good{color:var(--good)} .bad{color:var(--bad)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🤝 冲突与干系人问题 · 一张图看懂</h1>
+  <p class="sub">顺序就四步：先私下了解，再谈共同目标，最后手段才升级。考试里一上来就选升级、投票、调离的，基本都是错的。</p>
+
+  <div class="card">
+    <h2>四步处理顺序</h2>
+    <div class="flow">
+      <div class="step"><b>了解</b>私下了解诉求和原因</div><span class="arr">→</span>
+      <div class="step"><b>协商</b>围绕共同目标引导协商</div><span class="arr">→</span>
+      <div class="step"><b>调整</b>改沟通方式或参与计划</div><span class="arr">→</span>
+      <div class="step"><b>跟进</b>确认问题真的解决</div>
+    </div>
+    <p>❌ <b>最后手段才用的四样</b>：升级给发起人、投票少数服从多数、调离团队、施压强迫。跳过自己的职责直接用这些，等于告诉考官你不会处理冲突。</p>
+    <p>为什么先私下了解？公开场合问只会让人 defensive，私下才能听到真实诉求——是技术依据不同，还是资源、面子、信息不对称在作怪。</p>
+  </div>
+
+  <div class="card">
+    <h2>五种冲突处理方式</h2>
+    <div class="modes">
+      <div class="m best"><div class="f">合作 / 协作 <span>Collaborating</span></div><div class="row">一起找双赢方案，最花时间，但效果最好。重要问题、需要长期合作时首选。</div></div>
+      <div class="m"><div class="f">妥协 / 调和 <span>Compromising</span></div><div class="row">各让一步，先把事推进下去。时间紧、双方势均力敌时用。</div></div>
+      <div class="m"><div class="f">迁就 <span>Accommodating</span></div><div class="row">你先让一步，保住关系。对方的诉求更合理、或这事对你没那么重要时用。</div></div>
+      <div class="m"><div class="f">回避 <span>Avoiding</span></div><div class="row">先冷一冷，等情绪过去或信息齐了再谈。只适合小事、或现在谈只会更糟时。</div></div>
+      <div class="m last"><div class="f">强迫 <span>Forcing</span></div><div class="row">靠职权硬压下去。紧急、没时间商量时才用，伤关系，是最后手段。</div></div>
+    </div>
+    <p>考试口诀：<b>能合作就合作</b>，合作不了再妥协；回避和强迫只在特定场景下对，别当第一选择。</p>
+  </div>
+
+  <div class="card">
+    <h2>拿你做过的那道吵架题走一遍</h2>
+    <p>两名骨干为技术路线吵起来：一个在群里公开质疑对方方案，另一个私下按自己的版本推进，合并冲突越来越多。下周要给客户演示，职能经理建议把其中一人调离，先保住演示。</p>
+    <div class="ex">
+      <div class="line"><span>1. 最先做</span><b>分别私下找两人了解诉求和顾虑</b></div>
+      <div class="line"><span>2. 然后</span><b>引导他们围绕演示目标商量出都能接受的办法</b></div>
+      <div class="line"><span>❌ 错在哪</span><b>调离、投票选路线、升级给发起人裁定</b></div>
+    </div>
+    <p class="note">调离是把人赶走、不是解决问题；投票是把技术路线交给多数，而不是用演示目标和验收标准来评判；升级是跳过你自己的职责。</p>
+  </div>
+
+  <div class="card">
+    <h2>干系人不配合，也是同一套路</h2>
+    <p><b>关键干系人连续缺席评审会、签字人两周不回邮件</b>：先分析他缺席的原因、他真正关心的信息和期望的参与方式，再调整沟通方式或干系人参与计划，然后推动。越级找上级施压、公开提醒、不等签字先切换、无限期推后，都不对。</p>
+    <p><b>高影响力干系人持反对态度</b>：别无视、别公开反驳、别把他排除出名单——先分析他的诉求和反对原因，制定专门的沟通和参与策略。干系人变了（比如发起人换人、新负责人质疑项目必要性），先重新识别干系人、评估职权影响态度的变化，主动跟他讲项目价值和进展，更新参与策略。</p>
+    <div class="verdict">一句话：先私下了解，再谈共同目标，升级投票调离都是最后手段。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住三句：<b>先私下了解</b>；<b>用共同目标引导协商</b>；<b>跟进确认真的解决</b>。</p>
+    <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 6 节</p>
+  </div>
+</div>
+</body>
+</html>

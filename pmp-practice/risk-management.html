@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风险管理 · 一张图看懂</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:12px 0}
+  .step{border:1px solid var(--acc);border-radius:8px;padding:8px 12px;font-size:14px;background:rgba(88,166,255,.08);max-width:220px}
+  .step b{display:block;font-size:13px;color:var(--acc)}
+  .arr{align-self:center;padding:0 6px;color:var(--dim);font-size:18px}
+  .resp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:560px){.resp{grid-template-columns:1fr}}
+  .r{border:1px solid var(--line);border-radius:10px;padding:14px;background:#0d1117}
+  .r .f{font-size:16px;font-weight:700}
+  .r .f span{color:var(--acc);font-weight:400;font-size:13px}
+  .r .row{font-size:14px;color:var(--dim);margin-top:6px}
+  .r .row b{color:var(--text)}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--acc);border-radius:10px;background:rgba(88,166,255,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>⚠️ 风险管理 · 一张图看懂</h1>
+  <p class="sub">六步走，核心就三句：先登记再分析，应对看触发条件，失效了重新评估。</p>
+
+  <div class="card">
+    <h2>六步流程</h2>
+    <div class="flow">
+      <div class="step"><b>识别</b>找出可能出什么事</div><span class="arr">→</span>
+      <div class="step"><b>登记</b>立刻记入风险登记册</div><span class="arr">→</span>
+      <div class="step"><b>分析</b>概率 × 影响排优先级</div><span class="arr">→</span>
+      <div class="step"><b>应对</b>定策略、定触发条件</div><span class="arr">→</span>
+      <div class="step"><b>执行</b>条件到了就动手</div><span class="arr">→</span>
+      <div class="step"><b>监控</b>盯效果、盯次生风险</div>
+    </div>
+    <p>⚠️ <b>登记不是应对完才做的事</b>：风险一识别出来就登记，登记册贯穿全程——分析、应对、监控的结果都要回写进登记册。只记不处理、处理了不更新，都是错的。</p>
+    <p>分析分两层：先定性（概率 × 影响排个高低），大的再定量（算它到底要花多少钱、拖多少天）。小风险不用每一步都算到底。</p>
+  </div>
+
+  <div class="card">
+    <h2>四种应对：威胁来了怎么办</h2>
+    <div class="resp">
+      <div class="r"><div class="f">规避 <span>Avoid</span></div><div class="row"><b>把风险源去掉</b>：换方案、砍掉高风险的那部分工作，风险直接消失。</div></div>
+      <div class="r"><div class="f">转移 <span>Transfer</span></div><div class="row"><b>把后果交给别人扛</b>：买保险、外包给供应商。注意：<b>转移不消除风险</b>，出了事还是你的项目要兜底。</div></div>
+      <div class="r"><div class="f">减轻 <span>Mitigate</span></div><div class="row"><b>把概率或影响打下来</b>：签锁价协议、准备备选供应商、分批采购、加测试。最常用的一种。</div></div>
+      <div class="r"><div class="f">接受 <span>Accept</span></div><div class="row"><b>主动接受</b>：留应急储备，等它发生；<b>被动接受</b>：什么都不做，等发生了再处理。只对小风险用。</div></div>
+    </div>
+    <p>机会（好事）也有四种，方向反过来：<b>开拓</b>（确保它发生）、<b>分享</b>（找人一起分好处）、<b>提高</b>（把概率或收益抬上去）、<b>接受</b>（顺其自然）。考试问“威胁”就从上面四种里选，别串到机会那组。</p>
+    <p>怎么选？<span class="good"><b>高概率高影响 → 主动应对</b></span>，别等它发生；低概率低影响 → 接受、记下来盯着就行。</p>
+  </div>
+
+  <div class="card">
+    <h2>拿你做过的那道供应商题走一遍</h2>
+    <p>风险登记册里记了“供应商交货延迟”，应对是启用已谈好的本地备选，触发条件写的是“交货延迟超过 15 天”。今天供应商通知：首批要晚 20 天，后续也保证不了。</p>
+    <div class="ex">
+      <div class="line"><span>1. 对触发条件</span><b>晚 20 天 ＞ 15 天，已满足</b></div>
+      <div class="line"><span>2. 该做什么</span><b>按登记册执行备选供应商</b></div>
+      <div class="line"><span>3. 别忘了两件事</span><b>更新登记册 + 告诉相关干系人</b></div>
+      <div class="line"><span>❌ 错在哪</span><b>先观望省钱、整体重排、找发起人决定终止</b></div>
+    </div>
+    <p class="note">先观望是拿 12% 的涨价赌交货能追回来；触发条件就是用来省掉“要不要动手”这个纠结的，到了就执行。</p>
+  </div>
+
+  <div class="card">
+    <h2>应对失效了怎么办</h2>
+    <p>新出现的<b>次生风险</b>（应对措施本身带来的新风险），或者原策略完全无效时：<b>重新评估风险 → 更新风险登记册 → 制定新的应对策略</b>。继续执行已经失效的原策略、放弃风险管理、只记不处理，都是错的。</p>
+    <p>同理：高概率高影响的核心供应商可能涨价，别等涨价真的发生再处理——先制定应对（锁价协议或备选供应商），并记入登记册。</p>
+    <div class="verdict">一句话：识别就登记，分析排先后，应对看条件，失效就重评。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住三句：<b>先登记再分析</b>；<b>应对看触发条件</b>；<b>转移不消除风险</b>。</p>
+    <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 5 节</p>
+  </div>
+</div>
+</body>
+</html>
