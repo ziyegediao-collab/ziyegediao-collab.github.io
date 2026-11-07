@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挣值管理 · 一张图看懂</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .nums{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:560px){.nums{grid-template-columns:1fr 1fr}}
+  .num{border:1px solid var(--line);border-radius:10px;padding:14px;background:#0d1117}
+  .num.total{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .num .sym{font-size:22px;font-weight:700;color:var(--acc)}
+  .num.total .sym{color:var(--warn)}
+  .num .en{font-size:12px;color:var(--dim)}
+  .num .zh{font-size:15px;font-weight:700;margin-top:2px}
+  .num .def{font-size:13px;color:var(--dim);margin-top:4px;line-height:1.6}
+  .judge{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:560px){.judge{grid-template-columns:1fr}}
+  .j{border:1px solid var(--line);border-radius:10px;padding:14px;background:#0d1117}
+  .j .f{font-size:16px;font-weight:700}
+  .j .f span{color:var(--acc);font-weight:400;font-size:13px}
+  .j .row{font-size:14px;margin-top:6px}
+  .good{color:var(--good)} .bad{color:var(--bad)}
+  .formula{font-size:16px;font-weight:700;text-align:center;padding:10px 0;border-top:1px solid var(--line)}
+  .formula:first-child{border-top:0}
+  .formula span{color:var(--dim);font-weight:400;font-size:13px;display:block}
+  .ex{font-variant-numeric:tabular-nums}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .ex .line b{white-space:nowrap}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--bad);border-radius:10px;background:rgba(248,81,73,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📊 挣值管理 · 一张图看懂</h1>
+  <p class="sub">四个数、两个指标、三个公式。上一版图片把 CPI 的小字写错了，这一版是网页文字，不会再错。</p>
+
+  <div class="card">
+    <h2>四个数</h2>
+    <p>前三个是“进行到现在”，第四个是“从头到尾的总盘子”。</p>
+    <div class="nums">
+      <div class="num"><div class="sym">PV</div><div class="en">Planned Value · 计划价值</div><div class="zh">到今天原计划该干的活</div><div class="def">按计划，到现在这个时间点应该完成的工作值多少钱。</div></div>
+      <div class="num"><div class="sym">EV</div><div class="en">Earned Value · 挣值</div><div class="zh">实际干完的活</div><div class="def">到现在为止，真正完成的工作值多少钱。</div></div>
+      <div class="num"><div class="sym">AC</div><div class="en">Actual Cost · 实际成本</div><div class="zh">已经花的钱</div><div class="def">为完成这些工作，实际已经花掉了多少钱。</div></div>
+      <div class="num total"><div class="sym">BAC</div><div class="en">Budget at Completion · 完工预算</div><div class="zh">整个项目计划一共要花多少钱</div><div class="def">总盘子。基准一般不变，除非变更获批才改。</div></div>
+    </div>
+    <p>⚠️ 别把 PV 和 BAC 搞混：PV 是“到今天为止该花的”，BAC 是“整个项目一共要花的”。</p>
+  </div>
+
+  <div class="card">
+    <h2>两个指标：分子永远是 EV</h2>
+    <div class="judge">
+      <div class="j">
+        <div class="f">CPI = EV ÷ AC <span>管成本，不管进度</span></div>
+        <div class="row"><span class="good">＞ 1　成本节约</span>：干的活比花的钱值</div>
+        <div class="row"><span class="bad">＜ 1　成本超支</span>：花的钱比干的活多</div>
+      </div>
+      <div class="j">
+        <div class="f">SPI = EV ÷ PV <span>管进度，不管成本</span></div>
+        <div class="row"><span class="good">＞ 1　进度提前</span>：干的比计划多</div>
+        <div class="row"><span class="bad">＜ 1　进度落后</span>：干的比计划少</div>
+      </div>
+    </div>
+    <p>❌ 上一版图片错在这里：CPI 那行写成了“进度提前 / 进度超支”。CPI 只管钱，进度是 SPI 的事。</p>
+  </div>
+
+  <div class="card">
+    <h2>三个公式：预测干完要花多少</h2>
+    <div class="formula">EAC = BAC ÷ CPI<span>完工估算 · 按现在这个花钱效率，干完总共要花多少（典型偏差时用除法）</span></div>
+    <div class="formula">ETC = EAC − AC<span>完工尚需估算 · 剩下的活还要花多少</span></div>
+    <div class="formula">VAC = BAC − EAC<span>完工偏差 · 负数 = 要超支，正数 = 能结余</span></div>
+  </div>
+
+  <div class="card">
+    <h2>拿你 11 月 3 日做过的那道题算一遍</h2>
+    <p>PV 120 万、EV 96 万、AC 110 万、BAC 200 万：</p>
+    <div class="ex">
+      <div class="line"><span>CPI = 96 ÷ 110</span><b>≈ 0.87</b></div>
+      <div class="line"><span>SPI = 96 ÷ 120</span><b>≈ 0.80</b></div>
+      <div class="line"><span>EAC = 200 ÷ 0.87</span><b>≈ 230 万</b></div>
+      <div class="line"><span>ETC = 230 − 110</span><b>≈ 120 万</b></div>
+      <div class="line"><span>VAC = 200 − 230</span><b>≈ −30 万</b></div>
+    </div>
+    <p class="note">顺带两个差值：CV = EV − AC = −14 万（超支 14 万）；SV = EV − PV = −24 万（落后 24 万的活）。数字都按 0.87 四舍五入，≈230 万 / ≈120 万 / −30 万与之前讲的一致。</p>
+    <div class="verdict">一句话：又超支又落后，按现在效率干完要多花 30 万。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住三句：<b>分子永远是 EV</b>；<b>CPI 管钱，SPI 管时间</b>；<b>BAC 是总盘子</b>。</p>
+    <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 3 节</p>
+  </div>
+</div>
+</body>
+</html>
