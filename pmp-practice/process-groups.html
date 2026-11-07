@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五大过程组 · 一张图看懂</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:12px 0}
+  .step{border:1px solid var(--acc);border-radius:8px;padding:8px 12px;font-size:14px;background:rgba(88,166,255,.08);max-width:220px}
+  .step b{display:block;font-size:13px;color:var(--acc)}
+  .arr{align-self:center;padding:0 6px;color:var(--dim);font-size:18px}
+  .grp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:560px){.grp{grid-template-columns:1fr}}
+  .g{border:1px solid var(--line);border-radius:10px;padding:14px;background:#0d1117}
+  .g .f{font-size:16px;font-weight:700}
+  .g .f span{color:var(--acc);font-weight:400;font-size:13px}
+  .g .row{font-size:14px;color:var(--dim);margin-top:6px}
+  .g .row b{color:var(--text)}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--acc);border-radius:10px;background:rgba(88,166,255,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🧭 五大过程组 · 一张图看懂</h1>
+  <p class="sub">不是五个阶段，而是一组循环用的工作：监控贯穿全程，收尾哪怕项目提前终止也要走。</p>
+
+  <div class="card">
+    <h2>五组怎么走</h2>
+    <div class="flow">
+      <div class="step"><b>启动</b>定章程、识别干系人</div><span class="arr">→</span>
+      <div class="step"><b>规划</b>定范围、排进度、算预算</div><span class="arr">→</span>
+      <div class="step"><b>执行</b>带团队干活、管质量</div><span class="arr">→</span>
+      <div class="step"><b>监控</b>对照基准、管变更、控风险</div><span class="arr">→</span>
+      <div class="step"><b>收尾</b>验收、移交、总结教训</div>
+    </div>
+    <p>⚠️ <b>监控不是一个阶段</b>：它从启动后就开始、一直跟到收尾，哪里偏离基准就在哪里纠。只在执行中期才想起对照基准，已经晚了。</p>
+    <p>每组都有它的产出，考试常直接问“这一步该出什么”：启动出<b>项目章程</b>和<b>干系人登记册</b>；规划出<b>范围、进度、成本三大基准</b>和各管理计划；执行出<b>可交付成果</b>；监控出<b>绩效报告和变更请求</b>；收尾出<b>最终验收、移交和教训总结</b>。</p>
+  </div>
+
+  <div class="card">
+    <h2>每组干什么、别干错什么</h2>
+    <div class="grp">
+      <div class="g"><div class="f">启动 <span>Initiating</span></div><div class="row"><b>定方向、认人</b>：批章程、认干系人、定初步范围。干系人这时支持不等于全程在场——执行中缺席了要先单独沟通原因、调整参与方式，而不是公开提醒或找发起人施压。</div></div>
+      <div class="g"><div class="f">规划 <span>Planning</span></div><div class="row"><b>定基准、排计划</b>：范围、进度、成本、质量、风险、沟通、采购，缺一不可。规划不是一次性写完就锁死，基准一变就要走变更控制。</div></div>
+      <div class="g"><div class="f">执行 <span>Executing</span></div><div class="row"><b>干活、带人</b>：按计划交付、管理团队和干系人、落实质量和采购。执行中冒出的新需求不直接接，先走变更。</div></div>
+      <div class="g"><div class="f">监控 <span>Monitoring &amp; Controlling</span></div><div class="row"><b>对照、纠偏</b>：拿实际对照基准，偏差大了就分析原因、提纠正措施或变更请求。只看进度不看成本、只汇报不纠偏，都不算监控。</div></div>
+    </div>
+    <p><b>收尾（Closing）</b>：验收、移交成果、结清合同、释放资源、归档并总结教训。项目提前终止、客户提前叫停，<b>也要走正式收尾</b>，不能直接散伙、把文档一扔了事。</p>
+  </div>
+
+  <div class="card">
+    <h2>拿你做过的收尾题走一遍</h2>
+    <p>项目收尾时，客户拒绝签署验收，理由是部分功能与当初口头承诺不一致，但合同和范围说明书里没有这些功能。</p>
+    <div class="ex">
+      <div class="line"><span>验收以什么为准</span><b>合同和范围说明书，不是口头承诺</b></div>
+      <div class="line"><span>该做什么</span><b>拿出依据核对验收标准，协商处理差异</b></div>
+      <div class="line"><span>❌ 错在哪</span><b>凭口头承诺返工、硬压客户签字</b></div>
+    </div>
+    <p class="note">同理：上线后才发现运维成本远高于预期，收尾时最该做的是把偏差记入教训并协商优化方案，而不是甩手不管或免费包下来。</p>
+  </div>
+
+  <div class="card">
+    <h2>三大领域权重（2026 年 7 月新大纲）</h2>
+    <p><b>人员 33% · 过程 41% · 业务环境 26%</b>。上一版是 42% / 50% / 8%，业务环境从 8% 翻到 26%——治理、合规、变更、风险这些原来“小头”的内容，现在占了超过四分之一，别再按老权重分配复习时间。</p>
+    <p class="note">来源：PMI《PMP Examination Content Outline》，2026 年 7 月 9 日生效版（2026 年 8 月 11 日修订）。</p>
+    <div class="verdict">一句话：启动定方向，规划定基准，执行出成果，监控全程纠偏，收尾正式关门。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住三句：<b>监控贯穿全程</b>；<b>提前终止也要收尾</b>；<b>验收以合同为准</b>。</p>
+    <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 2 节</p>
+  </div>
+</div>
+</body>
+</html>

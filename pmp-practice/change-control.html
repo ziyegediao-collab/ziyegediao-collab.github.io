@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>变更控制 · 一张图看懂</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:12px 0}
+  .step{border:1px solid var(--acc);border-radius:8px;padding:8px 12px;font-size:14px;background:rgba(88,166,255,.08);max-width:220px}
+  .step b{display:block;font-size:13px;color:var(--acc)}
+  .arr{align-self:center;padding:0 6px;color:var(--dim);font-size:18px}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--acc);border-radius:10px;background:rgba(88,166,255,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔁 变更控制 · 一张图看懂</h1>
+  <p class="sub">逢变必走。核心就一句：先立项进流程，评估在流程里做，获批才能动手。</p>
+
+  <div class="card">
+    <h2>六步流程</h2>
+    <div class="flow">
+      <div class="step"><b>1. 提出</b>任何人提正式变更请求，书面、可追溯</div><span class="arr">→</span>
+      <div class="step"><b>2. 登记</b>记入变更日志，进入变更控制流程</div><span class="arr">→</span>
+      <div class="step"><b>3. 评估</b>在流程里评估对范围、进度、成本、质量、风险的影响</div><span class="arr">→</span>
+      <div class="step"><b>4. 审批</b>变更控制委员会（CCB）批准、否决或推迟</div><span class="arr">→</span>
+      <div class="step"><b>5. 更新</b>获批后更新基准和相关文档</div><span class="arr">→</span>
+      <div class="step"><b>6. 执行</b>通知团队按新基准干活，并监控落实</div>
+    </div>
+    <p>⚠️ <b>评估是流程里面的一步，不能在流程外面先评估、再决定交不交。</b>先评估再决定要不要提交、口头答应了再补手续、私下做原型，都是同一个陷阱：评估一旦放在流程外，口头承诺和“顺手就能做”这种口子就堵不住了。</p>
+    <p>被否决的请求也要<b>记录原因并告知提出人</b>，不是石沉大海；推迟的请求留在日志里，到期再议。</p>
+  </div>
+
+  <div class="card">
+    <h2>谁说了都不算“获批”</h2>
+    <p>客户高管当场要求、发起人现场点头、团队骨干说“顺手就能做”，<b>都不是批准</b>。批准只有 CCB 给。没获批就动手是先斩后奏，获批了不更新基准和文档、团队还按旧版本干活，等于没批。</p>
+    <p>直接拒绝也不对：预算里没留空间、工期很紧，都不是拒绝的理由——先走流程评估，<b>让流程给结论</b>，而不是凭感觉拍板。</p>
+  </div>
+
+  <div class="card">
+    <h2>拿你做过的那道看板题走一遍</h2>
+    <p>项目指导会上，运营总监口头提出加一个“实时经营看板”，管理层下周开会就要看；开发估算“也就两三天”，建议直接动手、做完再补手续；但这个改动要动正在测试的报表模块，预算里也没有为它留出空间。</p>
+    <div class="ex">
+      <div class="line"><span>1. 先做什么</span><b>请运营总监提交正式变更请求，进入流程</b></div>
+      <div class="line"><span>2. 在流程里评估</span><b>对进度、成本和测试中模块的影响</b></div>
+      <div class="line"><span>3. 再审批</span><b>CCB 拍板，获批后再动手</b></div>
+      <div class="line"><span>❌ 错在哪</span><b>先评估再决定交不交、边做边补手续、直接拒绝</b></div>
+    </div>
+    <p class="note">这道题就是你 11 月 6 日周五混合套第 1 题做对的那道——同一个陷阱，11 月 3 日周二和 11 月 4 日晚上加练时各栽过一次，第三次才拿下。</p>
+  </div>
+
+  <div class="card">
+    <h2>获批了，团队还在按旧版本干活？</h2>
+    <p>先查两件事：<b>变更有没有传达到位</b>，以及<b>相关基准和文档有没有更新</b>。处罚当事人、重新走一遍审批、宣布变更无效，都搞错了方向——问题在落地，不在审批。</p>
+    <div class="verdict">一句话：变更先立项进流程，评估在流程里做，获批才能动手。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住三句：<b>口头要求不是批准</b>；<b>评估在流程里做</b>；<b>获批了要更新基准再通知</b>。</p>
+    <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 1 节</p>
+  </div>
+</div>
+</body>
+</html>

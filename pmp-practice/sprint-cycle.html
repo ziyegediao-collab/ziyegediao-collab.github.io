@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint 循环 · 一张图看懂</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:12px 0}
+  .step{border:1px solid var(--acc);border-radius:8px;padding:8px 12px;font-size:14px;background:rgba(88,166,255,.08);max-width:220px}
+  .step b{display:block;font-size:13px;color:var(--acc)}
+  .arr{align-self:center;padding:0 6px;color:var(--dim);font-size:18px}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--acc);border-radius:10px;background:rgba(88,166,255,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔄 Sprint 循环 · 一张图看懂</h1>
+  <p class="sub">一个 Sprint 就是一个小闭环：定目标、做增量、拿反馈、改流程，再来一轮。长度固定，是节奏的锚。</p>
+
+  <div class="card">
+    <h2>一轮怎么走</h2>
+    <div class="flow">
+      <div class="step"><b>待办梳理</b>细化近期故事、定验收标准</div><span class="arr">→</span>
+      <div class="step"><b>规划会</b>定 Sprint 目标，团队按历史速率自主拉取</div><span class="arr">→</span>
+      <div class="step"><b>每日站会</b>15 分钟：进展、计划、障碍</div><span class="arr">→</span>
+      <div class="step"><b>开发工作</b>做出满足完成定义（DoD）的增量</div><span class="arr">→</span>
+      <div class="step"><b>评审会</b>给干系人演示达标部分、拿反馈</div><span class="arr">→</span>
+      <div class="step"><b>回顾会</b>复盘流程，改进项落到负责人、行动和复查时间</div><span class="arr">↻</span>
+      <div class="step"><b>下一个 Sprint</b></div>
+    </div>
+    <p>⚠️ <b>Sprint 长度固定，中途不延长。</b>承诺兑现不了，办法是下轮少拉、调整优先级，不是把 Sprint 拉长一周，也不是靠加班和压缩测试硬补。</p>
+    <p><b>完成定义（DoD）是“完成”的唯一标准</b>：能跑通主流程还不够，异常分支、回归测试没做完就不算完成，评审会上只展示达标的部分。</p>
+  </div>
+
+  <div class="card">
+    <h2>中途插单怎么办</h2>
+    <p>新需求进 Sprint 只有一条路：<b>产品负责人和团队一起评估它对 Sprint 目标和已承诺工作的影响，共同决定是否置换</b>——确需插入，就等量换出已排入的工作。PO 单方面塞、团队投票表决、直接延长 Sprint，都不对。</p>
+    <p>故事没细化、没验收标准、技术方案没评估过，<b>就别排进 Sprint</b>：先拆细、定标准、理清依赖，达不到可承诺的状态就先不排，PO 重新排优先级并对外沟通。</p>
+    <p>站会变了味也要修：站会是团队同步进展、计划和障碍的 15 分钟，不是向项目经理逐个汇报、也不是会后才冒出真正卡住的问题。深入讨论会后另约，别把站会开成半小时的问题讨论会。</p>
+  </div>
+
+  <div class="card">
+    <h2>拿你做过的第 4 个 Sprint 那道题走一遍</h2>
+    <p>第 4 个 Sprint，产品负责人希望团队承诺完成待办最前面的 10 个用户故事，理由是重要干系人已对外放出风声；但团队过去三个 Sprint 实际完成量一直在 6 到 7 个，本 Sprint 还有一名核心成员要休假一周，另有一个外部接口联调还没排期。</p>
+    <div class="ex">
+      <div class="line"><span>承诺看什么</span><b>历史速率 6–7 个 + 本 Sprint 实际可用人力</b></div>
+      <div class="line"><span>谁来定</span><b>团队自主决定，PO 重新排优先级并对外沟通预期</b></div>
+      <div class="line"><span>❌ 错在哪</span><b>加班硬接 10 个、延长 Sprint、投票定承诺</b></div>
+    </div>
+    <p class="note">评审会那道也一样：核心功能没满足完成定义，干系人又想当场加新需求——只展示达标部分，新需求记入待办、下次规划再排优先级，不虚报完成、不当场塞需求。</p>
+  </div>
+
+  <div class="card">
+    <h2>回顾会只记不改，等于白开</h2>
+    <p>回顾会的价值在改进：问题要落到<b>负责人、具体行动和复查时间</b>，下轮跟进闭环。连续几个 Sprint 都在同一个地方卡住（比如外部审批总要等四五天），就把它列为正式改进项，主动协商更快的节奏并持续跟进——取消回顾会、加班抢时间、直接找对方领导施压，都没解决根因。</p>
+    <div class="verdict">一句话：速率定承诺，DoD 定完成，插单要置换，回顾要闭环。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住三句：<b>Sprint 不延长</b>；<b>没达 DoD 不算完成</b>；<b>新需求先评估再置换</b>。</p>
+    <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 4 节</p>
+  </div>
+</div>
+</body>
+</html>
