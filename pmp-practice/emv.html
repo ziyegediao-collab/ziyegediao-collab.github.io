@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>预期货币价值 EMV · 一张算账卡</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--good:#3fb950;--bad:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:22px;margin:8px 0 4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card h2{font-size:17px;margin:0 0 6px}
+  .card p{color:var(--dim);font-size:14px;margin:6px 0}
+  .card p b{color:var(--text)}
+  .formula{font-size:16px;font-weight:700;text-align:center;padding:10px 0;border-top:1px solid var(--line)}
+  .formula:first-child{border-top:0}
+  .formula span{color:var(--dim);font-weight:400;font-size:13px;display:block}
+  .ex{font-variant-numeric:tabular-nums}
+  .ex .line{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+  .ex .line:first-child{border-top:0}
+  .ex .line b{white-space:nowrap}
+  .ex .line.win b{color:var(--good)}
+  .ex .line.lose b{color:var(--bad)}
+  .verdict{font-size:16px;font-weight:700;text-align:center;padding:14px;border:1px solid var(--warn);border-radius:10px;background:rgba(210,153,34,.08);margin-top:12px}
+  .hook{font-size:15px;text-align:center;color:var(--text)}
+  .hook b{color:var(--acc)}
+  .note{font-size:13px;color:var(--dim)}
+  .steps{font-size:15px;margin:8px 0}
+  .steps div{padding:4px 0}
+  .steps b{color:var(--acc)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎯 预期货币价值 EMV · 一张算账卡</h1>
+  <p class="sub">同一陷阱两天连错：11 月 10 日周二 Q5、11 月 11 日周三 Q1。不是读不懂题，是没动手算——两次都凭“最保险”的感觉选了“两个都上”。</p>
+
+  <div class="card">
+    <h2>一个公式</h2>
+    <div class="formula">每个方案的总成本 = 花的钱 + 剩下概率 × 出事损失<span>选总成本最低的那个方案</span></div>
+    <div class="formula">“最保险”不是算法<span>概率压得最低的方案，往往花钱最多；“两个都上”几乎总是全场最贵</span></div>
+  </div>
+
+  <div class="card">
+    <h2>四步算账法</h2>
+    <div class="steps">
+      <div><b>1.</b> 先把四个方案列出来：不做 / 方案 A / 方案 B / 两个都上</div>
+      <div><b>2.</b> 每个都算一遍总成本，一个也不能跳过</div>
+      <div><b>3.</b> 四个数比大小，选最低的</div>
+      <div><b>4.</b> 看到“两个都上”先怀疑：花两份钱，残余概率只按更低的那个算</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>11 月 10 日那道：数据中心迁移，出事赔 50 万，概率 30%</h2>
+    <div class="ex">
+      <div class="line"><span>什么都不做：30% × 50 万</span><b>15 万</b></div>
+      <div class="line win"><span>提前演练：8 万 + 10% × 50 万</span><b>13 万 ✓ 最低</b></div>
+      <div class="line"><span>备用链路：15 万 + 5% × 50 万</span><b>17.5 万</b></div>
+      <div class="line lose"><span>两个都上：8 + 15 + 5% × 50 万</span><b>25.5 万 · 最贵</b></div>
+    </div>
+    <p>备用链路概率最低（5%），但总价更贵。正确答案是只做演练。</p>
+  </div>
+
+  <div class="card">
+    <h2>11 月 11 日那道：支付网关演示，出事赔 40 万，概率 25%</h2>
+    <div class="ex">
+      <div class="line"><span>什么都不做：25% × 40 万</span><b>10 万</b></div>
+      <div class="line win"><span>技术探针：6 万 + 8% × 40 万</span><b>9.2 万 ✓ 最低</b></div>
+      <div class="line"><span>备用网关：12 万 + 3% × 40 万</span><b>13.2 万</b></div>
+      <div class="line lose"><span>两个都上：6 + 12 + 3% × 40 万</span><b>19.2 万 · 最贵</b></div>
+    </div>
+    <p>和昨天同一道坎：选了“两个都上”，其实是全场最贵的那个。</p>
+    <div class="verdict">记住一句：先算再选，四个算完再比。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">三句口诀：<b>先算再选</b>；<b>四个都要算完</b>；<b>概率最低 ≠ 最划算</b>。</p>
+    <p class="note" style="text-align:center">例题来自你自己做错的两道题，不是飞书笔记。原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a></p>
+  </div>
+</div>
+</body>
+</html>
