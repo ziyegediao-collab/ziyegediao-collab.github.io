@@ -152,7 +152,7 @@
     tasks.push({ text: text, done: false }); taskInput.value = ""; saveTasks(); renderTasks();
   }
   document.getElementById("addTask").addEventListener("click", addTask);
-  taskInput.addEventListener("keydown", function (e) { if (e.key === "Enter") addTask(); });
+  taskInput.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.isComposing && e.keyCode !== 229) addTask(); });
 
   render(); renderCount(); renderTasks();
 })();
