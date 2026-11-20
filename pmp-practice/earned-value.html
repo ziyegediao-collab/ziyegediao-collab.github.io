@@ -80,8 +80,10 @@
   </div>
 
   <div class="card">
-    <h2>三个公式：预测干完要花多少</h2>
-    <div class="formula">EAC = BAC ÷ CPI<span>完工估算 · 按现在这个花钱效率，干完总共要花多少（典型偏差时用除法）</span></div>
+    <h2>预测干完要花多少：EAC 分两种情况</h2>
+    <p>先看题干怎么说偏差：<b>会一直持续</b>，按现在这个花钱效率干完 → 用除法；<b>这次是一次性的，以后恢复原计划效率</b> → 用加法。</p>
+    <div class="formula">EAC = BAC ÷ CPI<span>典型偏差 · 偏差会持续，按现在这个花钱效率干完</span></div>
+    <div class="formula">EAC = AC + (BAC − EV)<span>非典型偏差 · 一次性超支：已经花的 + 剩下原计划要花的</span></div>
     <div class="formula">ETC = EAC − AC<span>完工尚需估算 · 剩下的活还要花多少</span></div>
     <div class="formula">VAC = BAC − EAC<span>完工偏差 · 负数 = 要超支，正数 = 能结余</span></div>
   </div>
@@ -101,7 +103,35 @@
   </div>
 
   <div class="card">
-    <p class="hook">记住三句：<b>分子永远是 EV</b>；<b>CPI 管钱，SPI 管时间</b>；<b>BAC 是总盘子</b>。</p>
+    <h2>再拿你 11 月 17 日做错的那道题算一遍（非典型）</h2>
+    <p>PV 120 万、EV 100 万、AC 130 万、BAC 240 万，这次超支是一次性的，以后恢复原计划效率：</p>
+    <div class="ex">
+      <div class="line"><span>CPI = 100 ÷ 130</span><b>≈ 0.77</b></div>
+      <div class="line"><span>按典型除法会算成 EAC = 240 ÷ 0.77</span><b>≈ 312 万 ❌</b></div>
+      <div class="line"><span>非典型用加法 EAC = 130 + (240 − 100)</span><b>= 270 万</b></div>
+      <div class="line"><span>ETC = 270 − 130</span><b>= 140 万</b></div>
+      <div class="line"><span>VAC = 240 − 270</span><b>= −30 万</b></div>
+    </div>
+    <p class="note">C 选项 240 万等于当超支没发生过：130 万已经花出去了，不可能回到原预算。140 万就是剩下原计划要花的钱（BAC − EV）。</p>
+    <div class="verdict">一句话：一次性超支，花掉的认账、剩下的按原计划算，干完要花 270 万。</div>
+  </div>
+
+  <div class="card">
+    <h2>再拿你 11 月 20 日又错的变式算一遍（非典型）</h2>
+    <p>PV 200 万、EV 160 万、AC 190 万、BAC 400 万，一次机房故障多花了钱，故障已排除，后面恢复原计划效率：</p>
+    <div class="ex">
+      <div class="line"><span>CPI = 160 ÷ 190</span><b>≈ 0.84</b></div>
+      <div class="line"><span>按典型除法会算成 EAC = 400 ÷ 0.84</span><b>≈ 475 万 ❌</b></div>
+      <div class="line"><span>非典型用加法 EAC = 190 + (400 − 160)</span><b>= 430 万</b></div>
+      <div class="line"><span>ETC = 430 − 190</span><b>= 240 万</b></div>
+      <div class="line"><span>VAC = 400 − 430</span><b>= −30 万</b></div>
+    </div>
+    <p class="note">B 选项 400 万只是总预算，不是最后花的钱：190 万已经花出去了，选“不会超支”等于假装这笔钱没花过。240 万就是剩下原计划要花的钱（BAC − EV）。</p>
+    <div class="verdict">一句话：同一个坑第二次——先看题干说“一次性、恢复原计划效率”，再动手算加法。</div>
+  </div>
+
+  <div class="card">
+    <p class="hook">记住四句：<b>分子永远是 EV</b>；<b>CPI 管钱，SPI 管时间</b>；<b>BAC 是总盘子</b>；<b>典型除法，非典型加法——先看题干说偏差会不会持续</b>。</p>
     <p class="note" style="text-align:center">原流程图解见 <a href="./">PMP 刷题模拟 · 流程图解</a> 第 3 节</p>
   </div>
 </div>
